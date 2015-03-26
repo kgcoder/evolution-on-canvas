@@ -1,10 +1,47 @@
-<html>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Evolution on Canvas</title>
+
+    
+</head>
+<body>
+
+<center>
+<canvas width='500' height='500'></canvas>
+</center>
+<script type="text/javascript" src="jquery.js"></script>
+<script src='jcanvas.min.js'></script>
+<script type="text/javascript">
+
+var x = 100
+
+$('document').ready(function(){
+setInterval(mainfunc, 150);
+
+});
+
+function mainfunc(){
+x++;
+
+$('canvas').drawRect({
+  fillStyle: '#000',
+  x: 250, y: 250,
+  width: 500,
+  height: 500
+});
+
+$('canvas').drawArc({
+  strokeStyle: '#f00',
+  strokeWidth: 10,
+  x: x, y: 100,
+  radius: 5
+});
 
 
-<canvas width='300' height='150'></canvas>
+};
+</script>
 
-
-
-
-
+</body>
 </html>
