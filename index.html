@@ -9,38 +9,50 @@
 <body>
 
 <center>
-<canvas width='500' height='500'></canvas>
+<canvas  width='500' height='500'></canvas>
 </center>
+
 <script type="text/javascript" src="jquery.js"></script>
 <script src='jcanvas.min.js'></script>
+
+<script type="text/javascript" src="mathModule.js"></script>
+<script type="text/javascript" src="creaturesDeclarations.js"></script>
+<script type="text/javascript" src="mainLoop.js"></script>
+
+
+
 <script type="text/javascript">
 
-var x = 100
+var redDots = [];
+var blueDots = [];
+
+
+
+
+
+createDots(redDots,"red",5);
+createDots(blueDots,"blue",100);
+
+
+
+function createDots(array,color,number){
+
+for (var i=0; i<number;i++){
+var dot = new Dot(getRandomArbitrary(10, 490),getRandomArbitrary(10, 490),color);
+array.push(dot);
+
+}
+
+}
+
 
 $('document').ready(function(){
-setInterval(mainfunc, 150);
+
+setInterval(mainLoop, 100);
 
 });
 
-function mainfunc(){
-x++;
 
-$('canvas').drawRect({
-  fillStyle: '#000',
-  x: 250, y: 250,
-  width: 500,
-  height: 500
-});
-
-$('canvas').drawArc({
-  strokeStyle: '#f00',
-  strokeWidth: 10,
-  x: x, y: 100,
-  radius: 5
-});
-
-
-};
 </script>
 
 </body>
