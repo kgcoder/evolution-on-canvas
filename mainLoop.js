@@ -8,33 +8,41 @@ $('canvas').drawRect({
   height: 500
 });
 
-calculateNextStepForCreatures(blueDots);
-calculateNextStepForCreatures(redDots);
+//check deaths
+doInLoop(blueDots,checkIfBlueDotsAreEatenByRedDots);
+
+//calculate next step
+doInLoop(blueDots,calculateNextStep);
+doInLoop(redDots,calculateNextStep);
 
 
-
-moveAndDrawCreatures(blueDots);
-moveAndDrawCreatures(redDots);
-
+//do next step and draw everybody
+doInLoop(blueDots,moveAndDraw);
+doInLoop(redDots,moveAndDraw);
 
 
 };
 
-function moveAndDrawCreatures(creaturesArray){
-for (var i=0;i<creaturesArray.length;i++){
+function checkIfBlueDotsAreEatenByRedDots(array,i){
 
-creaturesArray[i].move();
-creaturesArray[i].draw();
-
-
-}
-}
-function calculateNextStepForCreatures(creaturesArray){
-for (var i=0;i<creaturesArray.length;i++){
-
-creaturesArray[i].calculateNextStep();
-
-
+	var indexOfClosest = findClosest(array[i],redDots);
+	var distance = findDistance(array[i],redDots[indexOfClosest]);
+	if (distance<10) array.splice(i,1);
 
 }
-}
+
+
+
+
+
+function moveAndDraw(array,i){
+  array[i].move();
+  array[i].draw();
+  }
+  
+function calculateNextStep(array,i){
+  array[i].calculateNextStep();
+  }
+  
+
+  

@@ -1,4 +1,6 @@
 function Dot(x,y,color){
+
+this.dead=false;
 this.x=x;
 this.y=y;
 this.previousX=x;
@@ -9,8 +11,8 @@ this.nextY=y;
 this.calculateNextStep = function(){
 var nextX = this.x + getRandomArbitrary(-10, 10);
 var nextY = this.y + getRandomArbitrary(-10, 10);
-if (nextX>0+10&&nextX<500-10)this.nextX = nextX;
-if (nextY>0+10&&nextY<500-10)this.nextY = nextY;
+if (bodyIsWithinBoundaries(nextX,10,500))this.nextX = nextX;
+if (bodyIsWithinBoundaries(nextY,10,500))this.nextY = nextY;
 }
 
 
@@ -22,18 +24,17 @@ this.y=this.nextY;
 }
 
 
-this.draw = function(){
-$('canvas').drawArc({
-  strokeStyle: this.color,
-  strokeWidth: 10,
-  x: this.x, y: this.y,
-  radius: 5
-});
+this.draw = drawDot;
 
 
 }
 
 
-};
+
+
+
+function bodyIsWithinBoundaries(coordinate,radius,dimentionOfCanvas){
+	return coordinate>radius&&coordinate<dimentionOfCanvas-radius
+}
 
 
