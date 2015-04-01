@@ -9,23 +9,23 @@ $('canvas').drawRect({
 });
 
 //check deaths
-doInLoop(blueDots,checkIfBlueDotsAreEatenByRedDots);
+blueDots.forEachItem(checkIfBlueDotsAreEatenByRedDots);
 
 //calculate next step
-doInLoop(blueDots,calculateNextStep);
-doInLoop(redDots,calculateNextStep);
+blueDots.forEachItem(calculateNextStep);
+redDots.forEachItem(calculateNextStep);
 
 
 //do next step and draw everybody
-doInLoop(blueDots,moveAndDraw);
-doInLoop(redDots,moveAndDraw);
+blueDots.forEachItem(moveAndDraw);
+redDots.forEachItem(moveAndDraw);
 
 
 };
 
 function checkIfBlueDotsAreEatenByRedDots(array,i){
-
-	var indexOfClosest = findClosest(array[i],redDots);
+    
+	var indexOfClosest = array[i].findClosest(redDots);
 	var distance = findDistance(array[i],redDots[indexOfClosest]);
 	if (distance<10) array.splice(i,1);
 
