@@ -8,4 +8,4 @@ I’m in the process of reading a book called ‘Clean Code’. As I read it, I 
 
 The way I work with this project is I create a mess and then try to clean things up. So, if you see a mess, it means that I didn't have time to get rid of it yet. 
 
-For starters, I want to create a program in which red dot chase blue dots and eat them. The looks of the dots won't change. The only thing that evolves here is there behaviour. 
+For starters, I want to create a program in which red dot chase blue dots and eat them. The looks of the dots won't change. The only thing that evolves here is their behaviour. 
